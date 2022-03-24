@@ -12,15 +12,15 @@
     <!-- Header -->
     <header>
         <!-- HIGH SCORE TAKES YOU TO FINAL PAGE DISPLAYING ALL HIGH SCORES -->
-        <a href="">View High Score</a>
-        <p>
-            Timer
-        </p>
+        <div class="topper">
+            <span id="highScore">View High Scores</span>
+            <span id="timer">Timer:</span>
+        </div>
     </header>
     
-    <!-- Main Section -->
-    <main>
-        <h2 class="main-header">Coding Quiz Challenge</h2>
+    <!-- Quiz Intro -->
+    <section>
+        <h1 class="main-header">Coding Quiz Challenge</h1>
         <p class="intro">Try to answer the following code-related questions within the time limit.
             Keep in mind that incorrect answers will penalize your score/time by 10 seconds!
             Good Luck!
@@ -28,7 +28,12 @@
         <div class="startButton">
             <button class="buttonStyle">Start Quiz</button>
         </div>
-        <div class="answerList">
+    </section>
+
+    <!-- Questions -->
+    <section class="choiceList">
+        <div class="questions-container">
+        <h1 class="question"></h1>
             <ul>
                 <li>
                     <button class="buttonStyleChoices">Placeholder Answer</button>
@@ -43,8 +48,32 @@
                     <button class="buttonStyleChoices">Placeholder Answer</button>
                 </li>
             </ul>
+            <!-- displays if the user answers right or wrong -->
+            <span id="right-wrong"></span>
         </div>
-    </main>
+    </section>
+
+    <!-- Results -->
+    <section class="results">
+        <div class="results-container">
+            <h2>All Done!</h2>
+            <p>Enter your name or initials below</p>
+            <input type="text" class="input-line">
+            <button class="submit-btn">Submit</button>
+        </div>
+    </section>
+
+    <!-- High Score Page -->
+    <section class="highScoreList">
+        <div class="highScoreList-container">
+            <h2>High Scorees</h2>
+            <p>Click on 'View High Scores' on the top left of the page to view all high score history! Below are the most recent high scores!</p>
+            <div class="restart-game">
+                <button class="tryAgain">Try Again</button>
+                <button class="clearHighScore">Clear High Scores</button>
+            </div>
+        </div>
+    </section>
 
     <script src="./assets/js/script.js"></script>
 </body>
