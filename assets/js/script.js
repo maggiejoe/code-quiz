@@ -18,6 +18,7 @@ choiceEl4.addEventListener("click", verifyAnswer);
 
 // Results Variables
 var results = document.querySelector(".results-container");
+var score = timeRemaining
 
 // Quiz Question Variables
 var quizQuestions = [
@@ -116,6 +117,7 @@ function verifyAnswer () {
         currentIndex++;
         questionCycle ();
     }
+    
 }
 
 // Asking questions
@@ -129,7 +131,7 @@ function questionCycle () {
 
 // Show User Results
 function showResults () {
-    
+    document.querySelector(".results").style.display = "block";
 }
 
 
