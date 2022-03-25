@@ -74,6 +74,7 @@ startQuiz.addEventListener("click", function(){
     beginTimer();
     
     document.querySelector(".question-container").style.display = "block";
+    questionCycle();
 })
 
 // start timer
@@ -105,6 +106,10 @@ function verifyAnswer () {
 // Asking questions
 function questionCycle () {
     askQuestion.textContent = quizQuestions[currentIndex].question
+    choiceEl1.textContent = question[currentIndex].choice1
+    choiceEl2.textContent = question[currentIndex].choice2
+    choiceEl3.textContent = question[currentIndex].choice3
+    choiceEl4.textContent = question[currentIndex].choice4
     document.querySelector(".hide").style.display = "block";
 }
 
