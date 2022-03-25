@@ -2,17 +2,25 @@
 var timeRemaining = 60;
 var startQuiz = document.querySelector(".start-btn");
 var countdown = document.querySelector("#countdown");
+
+// Quiz Variables
 var askQuestion = document.querySelector(".question");
 var choiceEl1 = document.querySelector(".btn-1");
 var choiceEl2 = document.querySelector(".btn-2");
 var choiceEl3 = document.querySelector(".btn-3");
 var choiceEl4 = document.querySelector(".btn-4");
 
+// Event Listeners for Choice Buttons
+choiceEl1.addEventListener("click", verifyAnswer);
+choiceEl2.addEventListener("click", verifyAnswer);
+choiceEl3.addEventListener("click", verifyAnswer);
+choiceEl4.addEventListener("click", verifyAnswer);
+
 
 // Quiz Question Variables
 var quizQuestions = [
     {
-        question: "Commonly used data types DO NOT include:",
+        question: "Commonly used data types do NOT include:",
         choices: {
             choice1: "1. string",
             choice2: "2. booleans",
@@ -59,7 +67,7 @@ var quizQuestions = [
             choice3: "3. for loops",
             choice4: "4. console.log"
         },
-        answers: "4. console.log"
+        answer: "4. console.log"
     }
 ];
 
@@ -94,29 +102,28 @@ function beginTimer () {
 // Removing time from timer if question is answered wrong
 function verifyAnswer () {
     var correctAnswer = this.textContent
-    if (correctAnswer === quizQuestions[currentIndex].answers) {
-        timeRemaining;
+    if (correctAnswer === quizQuestions[currentIndex].answer) {
         document.querySelector("#right").style.display = "block";
     } else {
         timeRemaining -= 10;
         document.querySelector("#wrong").style.display = "block";
+    }
+    if (currentIndex < quizQuestions.length - 1) {
+        currentIndex++;
+        questionCycle ();
     }
 }
 
 // Asking questions
 function questionCycle () {
     askQuestion.textContent = quizQuestions[currentIndex].question
-    choiceEl1.textContent = question[currentIndex].choice1
-    choiceEl2.textContent = question[currentIndex].choice2
-    choiceEl3.textContent = question[currentIndex].choice3
-    choiceEl4.textContent = question[currentIndex].choice4
-    document.querySelector(".hide").style.display = "block";
+    choiceEl1.textContent = quizQuestions[currentIndex].choices.choice1
+    choiceEl2.textContent = quizQuestions[currentIndex].choices.choice2
+    choiceEl3.textContent = quizQuestions[currentIndex].choices.choice3
+    choiceEl4.textContent = quizQuestions[currentIndex].choices.choice4
 }
 
-// If answer is right or wrong, display response
-function showResponse () {
 
-}
 
 
 // Subtracting time from timer when incorrect answer is selected
