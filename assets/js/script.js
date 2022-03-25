@@ -1,103 +1,118 @@
 // Variables needed outside of a specific function
-var timeRemaining = 60;
-var timerInterval;
+var timeRemaining =60;
 var startQuiz = document.querySelector(".start-btn");
-var startTimer = document.querySelector(".timer");
+// var startTimer = document.querySelector(".timer");
 var countdown = document.querySelector("#countdown");
 var hideContent = document.querySelector("hide");
 
 
 // Quiz Question Variables
-var quizQuestion1 = "Commony used data types do NOT include:";
-var quizQuestion2 = "The condition in an if/else statment is enclosed in:";
-var quizQuesiton3 = "Arrays in JavaScript can be used to store:";
-var quizQuestion4 = "String values must be enclosed within __________ when being assigned to variables.";
-var quizQuestion5 = "A very useful tool used during development and debugging for printing content to the debugger is:";
-var quizQuestionsArray = [quizQuestion1, quizQuestion2, quizQuesiton3, quizQuestion4, quizQuestion5]
-
-var questionContainer = document.querySelector(".question.container");
-
-// Quiz Choice Variables
-var quizChoices1 = {
-    choice1: "Booleans",
-    choice2: "Alerts",
-    choice3: "Strings",
-    choice4: "Numbers"
-}
-
-var quizChoices2 = {
-    choice1: "Parenthesis",
-    choice2: "Quotes",
-    choice3: "Curly Brackets",
-    choice4: "Square Brackets"
-}
-
-var quizChoices3 = {
-    choice1: "Other Arrays",
-    choice2: "Numbers & Strings",
-    choice3: "Booleans",
-    choice4: "All of the Above"
-}
-
-var quizChoices4 = {
-    choice1: "Parenthesis",
-    choice2: "Quotes",
-    choice3: "Curly Brackets",
-    choice4: "Commas"
-}
-
-var quizChoices5 = {
-    choice1: "Terminal/Bash",
-    choice2: "JavaScript",
-    choice3: "for Loops",
-    choice4: "console.log"
-}
-
-var quizChoiceArray = [quizChoices1, quizChoices2, quizChoices3, quizChoices4, quizChoices5];
-
-// Choice Variables tied to classes in HTML
-var choice1 = document.querySelector(".btn-1");
-var choice2 = document.querySelector(".btn-2");
-var choice3 = document.querySelector(".btn-3");
-var choice4 = document.querySelector(".btn-4");
-
-// Quiz Answer Variables
-var correctAnswer1 = quizChoices1.choice2;
-var correctAnswer2 = quizChoices2.choice1;
-var correctAnswer3 = quizChoices3.choice4;
-var correctAnswer4 = quizChoices4.choice2;
-var correctAnswer5 = quizChoices5.choice4;
-var correctAnswersArray = [correctAnswer1, correctAnswer2, correctAnswer3, correctAnswer4, correctAnswer5];
+// var = currentIndex
+var quizQuestions = [
+    {
+        question: "Commonly used data types DO NOT include:",
+        choices: {
+            choice1: "1. string",
+            choice2: "2. booleans",
+            choice3: "3. alerts",
+            choice4: "4. mumbers"
+        },
+        answer: "3. alerts"
+    },
+    {
+        question: "The condition of an if/else statement is enclosed with:",
+        choices: {
+            choice1: "1. quotes",
+            choice2: "2. curly brackets",
+            choice3: "3. parenthesis",
+            choice4: "4. square brackets"
+        },
+        answer: "3. parenthesis"
+    },
+    {
+        question: "Arrays in JavaScript can be used to store:",
+        choices: {
+            choice1: "1. numbers & strings",
+            choice2: "2. other arrays",
+            choice3: "3. booleans",
+            choice4: "4. all of the above"
+        },
+        answer: "4. all of the above"
+    },
+    {
+        question: "String values must be enclosed with __________ when being assigned to variables.",
+        choices: {
+            choice1: "1. commas",
+            choice2: "2. curly brackets",
+            choice3: "3. quotes",
+            choice4: "4. parenthesis"
+        },
+        answer: "3. quotes"
+    },
+    {
+        question: "A very useful tool used during development and debugging for printing content to the debugger is:",
+        choices: {
+            choice1: "1. JavaScript",
+            choice2: "2. terminal/bash",
+            choice3: "3. for loops",
+            choice4: "4. console.log"
+        },
+        answers: "4. console.log"
+    }
+];
 
 // Start Quiz
 // when the 'start quiz' button is clicked, the following happens
 // 1) intro page disappears, 2) timer begins 3) first question with choices is displayed
 
+
 // intro page disappears
 startQuiz.addEventListener("click", function(){
-    document.querySelector(".main-page").style.display = "none";
+    document.querySelector(".intro-page").style.display = "none";
+    beginTimer();
+    
+    document.querySelector(".question-container").style.display = "block";
 })
 
 // start timer
-startQuiz.addEventListener("click", startTimer);
-
-function startTimer () {
-    timerInterval = setInterval (function() {
-        if (timer > 0) {
+function beginTimer () {
+    
+    var timerInterval = setInterval (function() {
+        if (timeRemaining > 0) {
             countdown.textContent = timeRemaining;
+            timeRemaining --;
         } else {
             countdown.textContent = "0";
-            // Still need to create and endQuiz function
-            // endQuiz;
+            clearInterval(timerInterval);
         }
-    });
+    }, 1000); 
 };
 
-// first question begins
-var generateQuestion = function () {
-    hide.style.display = "none";
 
-}
+// first question begins
+// var generateQuestions = function () {
+//     hide.style.display = "none";
+//     quizQuestion1
+//     if (quizQuestion1 = correctAnswer1) {
+//         document.querySelector("#right").style.display = "block";
+//     }
+//     if (quizQuestion2 = correctAnswer2) {
+//         document.querySelector("#right").style.display = "block";
+//     }
+//     if (quizQuestion3 = correctAnswer3) {
+//         document.querySelector("#right").style.display = "block";
+//     }
+//     if (quizQuestion4 = correctAnswer4) {
+//         document.querySelector("#right").style.display = "block";
+//     }
+//     if (quizQuestion5 = correctAnswer5) {
+//         document.querySelector("#right").style.display = "block";
+//     }
+//     else {
+//         document.querySelector("#wrong").style.display = "block";
+//     };
+//     generateQuestions();
+// };
 
 
 // Subtracting time from timer when incorrect answer is selected
