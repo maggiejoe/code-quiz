@@ -1,9 +1,11 @@
 // Variables needed outside of a specific function
 var timeRemaining = 60;
-var timeInterval;
+var timerInterval;
 var startQuiz = document.querySelector(".start-btn");
-var startTimer = document.querySelector("#timer");
-var highScore = timeRemaining;
+var startTimer = document.querySelector(".timer");
+var countdown = document.querySelector("#countdown");
+var hideContent = document.querySelector("hide");
+
 
 // Quiz Question Variables
 var quizQuestion1 = "Commony used data types do NOT include:";
@@ -12,6 +14,8 @@ var quizQuesiton3 = "Arrays in JavaScript can be used to store:";
 var quizQuestion4 = "String values must be enclosed within __________ when being assigned to variables.";
 var quizQuestion5 = "A very useful tool used during development and debugging for printing content to the debugger is:";
 var quizQuestionsArray = [quizQuestion1, quizQuestion2, quizQuesiton3, quizQuestion4, quizQuestion5]
+
+var questionContainer = document.querySelector(".question.container");
 
 // Quiz Choice Variables
 var quizChoices1 = {
@@ -51,6 +55,12 @@ var quizChoices5 = {
 
 var quizChoiceArray = [quizChoices1, quizChoices2, quizChoices3, quizChoices4, quizChoices5];
 
+// Choice Variables tied to classes in HTML
+var choice1 = document.querySelector(".btn-1");
+var choice2 = document.querySelector(".btn-2");
+var choice3 = document.querySelector(".btn-3");
+var choice4 = document.querySelector(".btn-4");
+
 // Quiz Answer Variables
 var correctAnswer1 = quizChoices1.choice2;
 var correctAnswer2 = quizChoices2.choice1;
@@ -59,27 +69,36 @@ var correctAnswer4 = quizChoices4.choice2;
 var correctAnswer5 = quizChoices5.choice4;
 var correctAnswersArray = [correctAnswer1, correctAnswer2, correctAnswer3, correctAnswer4, correctAnswer5];
 
-// Knowing what the right answer is
-var correctAnswer = function () {
-
-}
-
 // Start Quiz
-startQuiz.addEventListener("click", startTimer)
+// when the 'start quiz' button is clicked, the following happens
+// 1) intro page disappears, 2) timer begins 3) first question with choices is displayed
 
+// intro page disappears
 startQuiz.addEventListener("click", function(){
     document.querySelector(".main-page").style.display = "none";
 })
 
-startQuiz.addEventListener("click", nextQuestion)
+// start timer
+startQuiz.addEventListener("click", startTimer);
 
-// Moving forward to the following quesiton
-var correctIndex = 0
-var nextQuestion = function() {
-    if (correctIndex === quizQuestionsArray.length - 1) {
+function startTimer () {
+    timerInterval = setInterval (function() {
+        if (timer > 0) {
+            countdown.textContent = timeRemaining;
+        } else {
+            countdown.textContent = "0";
+            // Still need to create and endQuiz function
+            // endQuiz;
+        }
+    });
+};
 
-    }
+// first question begins
+var generateQuestion = function () {
+    hide.style.display = "none";
+
 }
+
 
 // Subtracting time from timer when incorrect answer is selected
 
