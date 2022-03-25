@@ -1,13 +1,15 @@
 // Variables needed outside of a specific function
-var timeRemaining =60;
+var timeRemaining = 60;
 var startQuiz = document.querySelector(".start-btn");
-// var startTimer = document.querySelector(".timer");
 var countdown = document.querySelector("#countdown");
-var hideContent = document.querySelector("hide");
+var askQuestion = document.querySelector(".question");
+var choiceEl1 = document.querySelector(".btn-1");
+var choiceEl2 = document.querySelector(".btn-2");
+var choiceEl3 = document.querySelector(".btn-3");
+var choiceEl4 = document.querySelector(".btn-4");
 
 
 // Quiz Question Variables
-// var = currentIndex
 var quizQuestions = [
     {
         question: "Commonly used data types DO NOT include:",
@@ -64,7 +66,7 @@ var quizQuestions = [
 // Start Quiz
 // when the 'start quiz' button is clicked, the following happens
 // 1) intro page disappears, 2) timer begins 3) first question with choices is displayed
-
+var currentIndex = 0
 
 // intro page disappears
 startQuiz.addEventListener("click", function(){
@@ -88,31 +90,28 @@ function beginTimer () {
     }, 1000); 
 };
 
+// Removing time from timer if question is answered wrong
+function verifyAnswer () {
+    var correctAnswer = this.textContent
+    if (correctAnswer === quizQuestions[currentIndex].answers) {
+        timeRemaining;
+        document.querySelector("#right").style.display = "block";
+    } else {
+        timeRemaining -= 10;
+        document.querySelector("#wrong").style.display = "block";
+    }
+}
 
-// first question begins
-// var generateQuestions = function () {
-//     hide.style.display = "none";
-//     quizQuestion1
-//     if (quizQuestion1 = correctAnswer1) {
-//         document.querySelector("#right").style.display = "block";
-//     }
-//     if (quizQuestion2 = correctAnswer2) {
-//         document.querySelector("#right").style.display = "block";
-//     }
-//     if (quizQuestion3 = correctAnswer3) {
-//         document.querySelector("#right").style.display = "block";
-//     }
-//     if (quizQuestion4 = correctAnswer4) {
-//         document.querySelector("#right").style.display = "block";
-//     }
-//     if (quizQuestion5 = correctAnswer5) {
-//         document.querySelector("#right").style.display = "block";
-//     }
-//     else {
-//         document.querySelector("#wrong").style.display = "block";
-//     };
-//     generateQuestions();
-// };
+// Asking questions
+function questionCycle () {
+    askQuestion.textContent = quizQuestions[currentIndex].question
+    document.querySelector(".hide").style.display = "block";
+}
+
+// If answer is right or wrong, display response
+function showResponse () {
+
+}
 
 
 // Subtracting time from timer when incorrect answer is selected
