@@ -16,6 +16,8 @@ choiceEl2.addEventListener("click", verifyAnswer);
 choiceEl3.addEventListener("click", verifyAnswer);
 choiceEl4.addEventListener("click", verifyAnswer);
 
+// Results Variables
+var results = document.querySelector(".results-container");
 
 // Quiz Question Variables
 var quizQuestions = [
@@ -25,7 +27,7 @@ var quizQuestions = [
             choice1: "1. string",
             choice2: "2. booleans",
             choice3: "3. alerts",
-            choice4: "4. mumbers"
+            choice4: "4. numbers"
         },
         answer: "3. alerts"
     },
@@ -72,11 +74,9 @@ var quizQuestions = [
 ];
 
 // Start Quiz
-// when the 'start quiz' button is clicked, the following happens
-// 1) intro page disappears, 2) timer begins 3) first question with choices is displayed
 var currentIndex = 0
 
-// intro page disappears
+// Intro Page Disappears, Timer Begins, Questions Begin
 startQuiz.addEventListener("click", function(){
     document.querySelector(".intro-page").style.display = "none";
     beginTimer();
@@ -85,7 +85,7 @@ startQuiz.addEventListener("click", function(){
     questionCycle();
 })
 
-// start timer
+// Start Timer
 function beginTimer () {
     
     var timerInterval = setInterval (function() {
@@ -99,14 +99,18 @@ function beginTimer () {
     }, 1000); 
 };
 
+// Verifying Answers
 // Removing time from timer if question is answered wrong
+// Letting the user know if they answered right or wrong
 function verifyAnswer () {
     var correctAnswer = this.textContent
     if (correctAnswer === quizQuestions[currentIndex].answer) {
         document.querySelector("#right").style.display = "block";
+        document.querySelector("#wrong").style.display = "none";
     } else {
         timeRemaining -= 10;
         document.querySelector("#wrong").style.display = "block";
+        document.querySelector("#right").style.display = "none";
     }
     if (currentIndex < quizQuestions.length - 1) {
         currentIndex++;
@@ -123,7 +127,10 @@ function questionCycle () {
     choiceEl4.textContent = quizQuestions[currentIndex].choices.choice4
 }
 
-
+// Show User Results
+function showResults () {
+    
+}
 
 
 // Subtracting time from timer when incorrect answer is selected
