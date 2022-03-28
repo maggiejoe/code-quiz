@@ -20,7 +20,8 @@ choiceEl4.addEventListener("click", verifyAnswer);
 var score = timeRemaining
 var submit = document.querySelector(".submit-btn");
 var inputLine = document.querySelector(".input-line");
-var showResults = document.querySelector(".show-results");
+var results = document.querySelector("#finalScore");
+var highScoreList = document.querySelector(".highScoreList-section");
 var clearHighScores = document.querySelector(".clearHighScore");
 var restartQuiz = document.querySelector(".restartQuiz");
 var viewHighScore = document.querySelector("#highScore");
@@ -85,12 +86,13 @@ var quizQuestions = [
 var currentIndex = 0
 
 // Intro Page Disappears, Timer Begins, Questions Begin
-startQuiz.addEventListener("click", function(){
+startQuiz.addEventListener("click", function() {
     document.querySelector(".intro-page").style.display = "none";
     beginTimer();
     
-    document.querySelector(".question-container").style.display = "block";
+    document.querySelector(".question-section").style.display = "block";
     questionCycle();
+    showScore();
 })
 
 // Start Timer
@@ -103,9 +105,9 @@ function beginTimer () {
         } else {
             countdown.textContent = "0";
             clearInterval(timerInterval);
+            // showScore();
         }
     }, 1000); 
-    // if timer his 0 then stop asking the qestions and go to the try again or view high score page
 };
 
 // Verifying Answers
@@ -124,7 +126,9 @@ function verifyAnswer () {
     if (currentIndex < quizQuestions.length - 1) {
         currentIndex++;
         questionCycle ();
-    }  
+    } else {
+        // showScore ();
+    }
 }
 
 // Asking questions
@@ -136,34 +140,61 @@ function questionCycle () {
     choiceEl4.textContent = quizQuestions[currentIndex].choices.choice4
 };
 
-// Generate High Score
-function highScores () {
+function showScore() {
+    results.textContent = score;
     var name = inputLine;
-    // show users score
-    showResults.textContent = score;
+    document.querySelector(".question-section").style.display = "none";
+    document.querySelector(".results-section").style.display = "block";
     submit.addEventListener("click", function () {
         if (inputLine.length > 0) {
             // save name and score to local storage
             localStorage.setItem(name, score);
         }
-        // display all high scores in order of best to worst
-    })
+    });
+    showHighScores ();
+};
+
+// Generate High Score
+function savedHighScore (event) {
+    event.preventDefault();
+    // display all high scores in order of best to worst
+
+    var saveHighScores = localStorage.getItem("high scores");
+    var scoresArray = [];
+
+    if (saveHighScores === "" || null) {
+        scoresArray = [];
+    } else {
+        scoresArray = JSON.parse(savedHighScores)
+    }
+
+    var scoresArrayString = JSON.stringify(scoresArray);
+    localStorage.setItem("High Scores", scoresArrayString);
 }
 
-function showScore() {
-    document.querySelector(".results-container").style.display = "block";
-    showResults.textContent = timeRemaining;
-    highScores ();
-}
+var highScoreIndex = 0
 
+function showHighScores () {
+    document.querySelector(".results-section").style.display = "none";
+    document.querySelector(".highScoreList-section").style.display = "block";
+
+    var savedHighScores = JSON.parse(savedHighScores).localStorage.getItem("high scores");
+    
+    for (; i < savedHighScores.length; i++) {
+        var newHighScores = document.createElement("p");
+        newHighScores.innerHTML = savedHighScores[highScoreIndex].name + ": " + savedHighScores[highScoreIndex].score;
+        highScoreList.appendChild(newHighScores);
+    }
+}
 // View High Scores Button
 viewHighScore.addEventListener("click", function() {
-    // show only the high scores list in the highScores ()
+    // show the high scores list in the highScores ()
+    highScores();
 });
 
 // Clear High Scores Button
 clearHighScores.addEventListener("click", function() {
-    localStorage.clear();
+    localStorage.removeItem("high score");
 });
 
 // Restart Game Button
