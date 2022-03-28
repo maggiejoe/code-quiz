@@ -16,9 +16,16 @@ choiceEl2.addEventListener("click", verifyAnswer);
 choiceEl3.addEventListener("click", verifyAnswer);
 choiceEl4.addEventListener("click", verifyAnswer);
 
-// Results Variables
-var results = document.querySelector(".results-container");
+// Results & High Score Variables
 var score = timeRemaining
+var submit = document.querySelector(".submit-btn");
+var inputLine = document.querySelector(".input-line");
+var showResults = document.querySelector(".show-results");
+var clearHighScores = document.querySelector(".clearHighScore");
+var restartQuiz = document.querySelector(".restartQuiz");
+var viewHighScore = document.querySelector("#highScore");
+var input = document.querySelector(".input-line");
+
 
 // Quiz Question Variables
 var quizQuestions = [
@@ -98,6 +105,7 @@ function beginTimer () {
             clearInterval(timerInterval);
         }
     }, 1000); 
+    // if timer his 0 then stop asking the qestions and go to the try again or view high score page
 };
 
 // Verifying Answers
@@ -116,8 +124,7 @@ function verifyAnswer () {
     if (currentIndex < quizQuestions.length - 1) {
         currentIndex++;
         questionCycle ();
-    }
-    
+    }  
 }
 
 // Asking questions
@@ -127,38 +134,39 @@ function questionCycle () {
     choiceEl2.textContent = quizQuestions[currentIndex].choices.choice2
     choiceEl3.textContent = quizQuestions[currentIndex].choices.choice3
     choiceEl4.textContent = quizQuestions[currentIndex].choices.choice4
+};
+
+// Generate High Score
+function highScores () {
+    var name = inputLine;
+    // show users score
+    showResults.textContent = score;
+    submit.addEventListener("click", function () {
+        if (inputLine.length > 0) {
+            // save name and score to local storage
+            localStorage.setItem(name, score);
+        }
+        // display all high scores in order of best to worst
+    })
 }
 
-// Show User Results
-function showResults () {
-    document.querySelector(".results").style.display = "block";
+function showScore() {
+    document.querySelector(".results-container").style.display = "block";
+    showResults.textContent = timeRemaining;
+    highScores ();
 }
 
+// View High Scores Button
+viewHighScore.addEventListener("click", function() {
+    // show only the high scores list in the highScores ()
+});
 
-// Subtracting time from timer when incorrect answer is selected
+// Clear High Scores Button
+clearHighScores.addEventListener("click", function() {
+    localStorage.clear();
+});
 
-// when 'Start Quiz' button is clicked the following must happen
-// 1) the main header turns into the question
-// 2) the intro disappears
-// 3) the hidding buttons display with the 4 possible answers
-// 4) the countdown begins
-
-
-
-
-
-
-// ^^ repeats until all questions are gone through
-// ^^ if a question is answered wrong 10 seconds comes off the timer
-// ^^ when the user selects and answer, 'correct' or 'wrong' is displayed at the bottom of the possible answers
-
-// onces all questions are completed
-// 1) high score is displayed (time remaining)
-// 2) and input line is displayed for the user to put their name/initials
-
-// when submit button is clicked
-// 1) high score is saved in localStorage
-// 2) two buttons appear
-// 2-a) restart - bring back to beginning to start quiz again
-// 2-b) clear high score - removes high score from localStorage
-// 3) high score is displayed on page in order of highest to lowest (top to bottom)
+// Restart Game Button
+restartQuiz.addEventListener("click", function() {
+    startQuiz ();
+});
