@@ -92,7 +92,6 @@ startQuiz.addEventListener("click", function() {
     
     document.querySelector(".question-section").style.display = "block";
     questionCycle();
-    showScore();
 })
 
 // Start Timer
@@ -105,7 +104,6 @@ function beginTimer () {
         } else {
             countdown.textContent = "0";
             clearInterval(timerInterval);
-            // showScore();
         }
     }, 1000); 
 };
@@ -127,7 +125,7 @@ function verifyAnswer () {
         currentIndex++;
         questionCycle ();
     } else {
-        // showScore ();
+        showScore ();
     }
 }
 
@@ -141,21 +139,21 @@ function questionCycle () {
 };
 
 function showScore() {
+    document.querySelector(".question-section").style.display = "none";
+    document.querySelector(".results").style.display = "block";
     results.textContent = score;
     var name = inputLine;
-    document.querySelector(".question-section").style.display = "none";
-    document.querySelector(".results-section").style.display = "block";
+    
     submit.addEventListener("click", function () {
         if (inputLine.length > 0) {
             // save name and score to local storage
             localStorage.setItem(name, score);
-        }
+        } 
     });
-    showHighScores ();
 };
 
 // Generate High Score
-function savedHighScore (event) {
+function savedScores (event) {
     event.preventDefault();
     // display all high scores in order of best to worst
 
@@ -165,31 +163,33 @@ function savedHighScore (event) {
     if (saveHighScores === "" || null) {
         scoresArray = [];
     } else {
-        scoresArray = JSON.parse(savedHighScores)
+        scoresArray = JSON.parse(scoresArray);
     }
 
-    var scoresArrayString = JSON.stringify(scoresArray);
+    var scoresArrayString = JSON.stringify(scoresArrayString);
     localStorage.setItem("High Scores", scoresArrayString);
+    showHighScores ();
 }
 
-var highScoreIndex = 0
 
 function showHighScores () {
     document.querySelector(".results-section").style.display = "none";
     document.querySelector(".highScoreList-section").style.display = "block";
 
-    var savedHighScores = JSON.parse(savedHighScores).localStorage.getItem("high scores");
+    var saveHighScores = localStorage.getItem("high scores");
     
-    for (; i < savedHighScores.length; i++) {
+    // create an if statement to check if null or ""
+    for (var highScoreIndex = 0; highScoreIndex < saveHighScores.length; highScoreIndex++) {
         var newHighScores = document.createElement("p");
-        newHighScores.innerHTML = savedHighScores[highScoreIndex].name + ": " + savedHighScores[highScoreIndex].score;
+        newHighScores.innerHTML = saveHighScores[highScoreIndex].name + ": " + saveHighScores[highScoreIndex].score;
         highScoreList.appendChild(newHighScores);
-    }
-}
+    } 
+} 
+
 // View High Scores Button
 viewHighScore.addEventListener("click", function() {
     // show the high scores list in the highScores ()
-    highScores();
+    showHighScores();
 });
 
 // Clear High Scores Button
