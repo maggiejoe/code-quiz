@@ -103,14 +103,12 @@ function beginTimer () {
         } else {
             countdown.textContent = "0";
             clearInterval(timerInterval);
-            // showHighScores ();
+            // displayHighScores ();
         }
     }, 1000);
 };
 
 // Verifying Answers
-// Removing time from timer if question is answered wrong
-// Letting the user know if they answered right or wrong
 function verifyAnswer () {
     var correctAnswer = this.textContent
     if (correctAnswer === quizQuestions[currentIndex].answer) {
@@ -128,7 +126,6 @@ function verifyAnswer () {
         // Ask Lilo for help on actually stopping timer
         // I believe I need to add it to this function before show score or within the showScore () results.textContent = score
         document.querySelector("#countdown").style.display = "none";
-        // console.log (beginTimer);
         showScore ();
     }
 }
@@ -148,12 +145,18 @@ function showScore() {
     score = timeRemaining;
 
     results.textContent = score;
-    var name = inputLine;
     
     submit.addEventListener("click", function () {
             // save name and score to local storage
-            localStorage.setItem(name, score);
-            showHighScores();
+            document.querySelector("#wrong").style.display = "none";
+            document.querySelector("#right").style.display = "none";
+
+            // localStorage.setItem(name, score);
+            if (document.querySelector(".input-line").value.length === 0) {
+                window.alert("You must input your name or initials!")
+            } else {
+            displayHighScores();
+            }
     });
 };
 
@@ -162,22 +165,30 @@ function savedScores (event) {
     event.preventDefault();
     // display all high scores in order of best to worst
 
-    var saveHighScores = localStorage.getItem("high scores");
+    var name = document.querySelector(".input-line").value.length;
+    var savedHighScores = localStorage.getItem("high Scores");
     var scoresArray = [];
 
-    if (saveHighScores === "" || null) {
+    if (savedHighScores === "" || null) {
         scoresArray = [];
     } else {
-        scoresArray = JSON.parse(scoresArray);
+        scoresArray = JSON.parse(savedHighScores)
     }
 
-    var scoresArrayString = JSON.stringify(scoresArrayString);
+    var userScore = {
+        userName: inputLine.value,
+        userFinalScore: score.textContent
+    };
+
+    scoresArray.push(userScore);
+
+    var scoresArrayString = JSON.stringify(scoresArray);
     localStorage.setItem("High Scores", scoresArrayString);
-    showHighScores ();
+    displayHighScores ();
 }
 
 
-function showHighScores () {
+function displayHighScores () {
     document.querySelector(".results").style.display = "none";
     document.querySelector(".highScoreList").style.display = "block";
     score = timeRemaining;
@@ -194,7 +205,7 @@ function showHighScores () {
 // View High Scores Button
 viewHighScore.addEventListener("click", function() {
     // show the high scores list in the highScores ()
-    showHighScores();
+    displayHighScores();
 });
 
 // Clear High Scores Button
