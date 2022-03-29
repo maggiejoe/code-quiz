@@ -17,7 +17,7 @@ choiceEl3.addEventListener("click", verifyAnswer);
 choiceEl4.addEventListener("click", verifyAnswer);
 
 // Results & High Score Variables
-var score = timeRemaining
+var score;
 var submit = document.querySelector(".submit-btn");
 var inputLine = document.querySelector(".input-line");
 var results = document.querySelector("#finalScore");
@@ -104,8 +104,9 @@ function beginTimer () {
         } else {
             countdown.textContent = "0";
             clearInterval(timerInterval);
+            // showHighScores ();
         }
-    }, 1000); 
+    }, 1000);
 };
 
 // Verifying Answers
@@ -125,6 +126,7 @@ function verifyAnswer () {
         currentIndex++;
         questionCycle ();
     } else {
+        // console.log (beginTimer);
         showScore ();
     }
 }
@@ -141,6 +143,7 @@ function questionCycle () {
 function showScore() {
     document.querySelector(".question-section").style.display = "none";
     document.querySelector(".results").style.display = "block";
+    score = timeRemaining;
     results.textContent = score;
     var name = inputLine;
     
@@ -175,7 +178,7 @@ function savedScores (event) {
 function showHighScores () {
     document.querySelector(".results-section").style.display = "none";
     document.querySelector(".highScoreList-section").style.display = "block";
-
+    score = timeRemaining;
     var saveHighScores = localStorage.getItem("high scores");
     
     // create an if statement to check if null or ""
