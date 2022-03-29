@@ -96,7 +96,6 @@ startQuiz.addEventListener("click", function() {
 
 // Start Timer
 function beginTimer () {
-    
     var timerInterval = setInterval (function() {
         if (timeRemaining > 0) {
             countdown.textContent = timeRemaining;
@@ -126,6 +125,9 @@ function verifyAnswer () {
         currentIndex++;
         questionCycle ();
     } else {
+        // Ask Lilo for help on actually stopping timer
+        // I believe I need to add it to this function before show score or within the showScore () results.textContent = score
+        document.querySelector("#countdown").style.display = "none";
         // console.log (beginTimer);
         showScore ();
     }
@@ -144,14 +146,14 @@ function showScore() {
     document.querySelector(".question-section").style.display = "none";
     document.querySelector(".results").style.display = "block";
     score = timeRemaining;
+
     results.textContent = score;
     var name = inputLine;
     
     submit.addEventListener("click", function () {
-        if (inputLine.length > 0) {
             // save name and score to local storage
             localStorage.setItem(name, score);
-        } 
+            showHighScores();
     });
 };
 
@@ -176,8 +178,8 @@ function savedScores (event) {
 
 
 function showHighScores () {
-    document.querySelector(".results-section").style.display = "none";
-    document.querySelector(".highScoreList-section").style.display = "block";
+    document.querySelector(".results").style.display = "none";
+    document.querySelector(".highScoreList").style.display = "block";
     score = timeRemaining;
     var saveHighScores = localStorage.getItem("high scores");
     
