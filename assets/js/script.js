@@ -101,9 +101,8 @@ function beginTimer () {
             countdown.textContent = timeRemaining;
             timeRemaining --;
         } else {
-            countdown.textContent = "0";
+            countdown.textContent = score;
             clearInterval(timerInterval);
-            // displayHighScores ();
         }
     }, 1000);
 };
@@ -123,10 +122,9 @@ function verifyAnswer () {
         currentIndex++;
         questionCycle ();
     } else {
-        // Ask Lilo for help on actually stopping timer
-        // I believe I need to add it to this function before show score or within the showScore () results.textContent = score
-        document.querySelector("#countdown").style.display = "none";
+        score = timeRemaining;
         showScore ();
+        timeRemaining = 0;
     }
 }
 
@@ -142,7 +140,6 @@ function questionCycle () {
 function showScore() {
     document.querySelector(".question-section").style.display = "none";
     document.querySelector(".results").style.display = "block";
-    score = timeRemaining;
 
     results.textContent = score;
     
@@ -155,21 +152,22 @@ function showScore() {
             if (document.querySelector(".input-line").value.length === 0) {
                 window.alert("You must input your name or initials!")
             } else {
-            displayHighScores();
+            savedScores();
+            // displayHighScores();
             }
     });
 };
 
 // Generate High Score
-function savedScores (event) {
-    event.preventDefault();
+function savedScores () {
+    // event.preventDefault();
     // display all high scores in order of best to worst
 
-    var name = document.querySelector(".input-line").value.length;
-    var savedHighScores = localStorage.getItem("high Scores");
+    var name = document.querySelector(".input-line").value;
+    var savedHighScores = localStorage.getItem("highScores");
     var scoresArray = [];
 
-    if (savedHighScores === "" || null) {
+    if (savedHighScores === "" || savedHighScores === null) {
         scoresArray = [];
     } else {
         scoresArray = JSON.parse(savedHighScores)
@@ -177,27 +175,26 @@ function savedScores (event) {
 
     var userScore = {
         userName: inputLine.value,
-        userFinalScore: score.textContent
+        userFinalScore: score
     };
-
+   
     scoresArray.push(userScore);
 
     var scoresArrayString = JSON.stringify(scoresArray);
-    localStorage.setItem("High Scores", scoresArrayString);
+    localStorage.setItem("highScores", scoresArrayString);
     displayHighScores ();
 }
-
 
 function displayHighScores () {
     document.querySelector(".results").style.display = "none";
     document.querySelector(".highScoreList").style.display = "block";
-    score = timeRemaining;
-    var saveHighScores = localStorage.getItem("high scores");
-    
+    var localSaveHighScores = JSON.parse(localStorage.getItem("highScores"));
+    var saveHighScores = localSaveHighScores.sort(function(a, b){return b.userFinalScore - a.userFinalScore});
+    console.log(saveHighScores);
     // create an if statement to check if null or ""
     for (var highScoreIndex = 0; highScoreIndex < saveHighScores.length; highScoreIndex++) {
-        var newHighScores = document.createElement("p");
-        newHighScores.innerHTML = saveHighScores[highScoreIndex].name + ": " + saveHighScores[highScoreIndex].score;
+        var newHighScores = document.createElement("li");
+        newHighScores.innerHTML = saveHighScores[highScoreIndex].userName + ": " + saveHighScores[highScoreIndex].userFinalScore;
         highScoreList.appendChild(newHighScores);
     } 
 } 
@@ -210,7 +207,7 @@ viewHighScore.addEventListener("click", function() {
 
 // Clear High Scores Button
 clearHighScores.addEventListener("click", function() {
-    localStorage.removeItem("high score");
+    localStorage.removeItem("highScores");
 });
 
 // Restart Game Button
