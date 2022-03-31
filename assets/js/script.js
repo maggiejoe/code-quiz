@@ -1,5 +1,7 @@
+// GLOBAL VARIABLES
 // Variables needed outside of a specific function
 var timeRemaining = 60;
+var timerInterval;
 var startQuiz = document.querySelector(".start-btn");
 var countdown = document.querySelector("#countdown");
 
@@ -18,6 +20,7 @@ choiceEl4.addEventListener("click", verifyAnswer);
 
 // Results & High Score Variables
 var score;
+var newHighScores;
 var submit = document.querySelector(".submit-btn");
 var inputLine = document.querySelector(".input-line");
 var results = document.querySelector("#finalScore");
@@ -85,6 +88,9 @@ var quizQuestions = [
 // Start Quiz
 var currentIndex = 0
 
+beginQuiz ();
+
+function beginQuiz () {
 // Intro Page Disappears, Timer Begins, Questions Begin
 startQuiz.addEventListener("click", function() {
     document.querySelector(".intro-page").style.display = "none";
@@ -93,10 +99,11 @@ startQuiz.addEventListener("click", function() {
     document.querySelector(".question-section").style.display = "block";
     questionCycle();
 })
+};
 
 // Start Timer
 function beginTimer () {
-    var timerInterval = setInterval (function() {
+    timerInterval = setInterval (function() {
         if (timeRemaining > 0) {
             countdown.textContent = timeRemaining;
             timeRemaining --;
@@ -193,7 +200,7 @@ function displayHighScores () {
     console.log(saveHighScores);
     // create an if statement to check if null or ""
     for (var highScoreIndex = 0; highScoreIndex < saveHighScores.length; highScoreIndex++) {
-        var newHighScores = document.createElement("li");
+        newHighScores = document.createElement("li");
         newHighScores.innerHTML = saveHighScores[highScoreIndex].userName + ": " + saveHighScores[highScoreIndex].userFinalScore;
         highScoreList.appendChild(newHighScores);
     } 
@@ -202,15 +209,25 @@ function displayHighScores () {
 // View High Scores Button
 viewHighScore.addEventListener("click", function() {
     // show the high scores list in the highScores ()
+    document.querySelector(".intro-page").style.display = "none";
+    document.querySelector("#countdown").style.display = "none";
+    document.querySelector(".question-section").style.display = "none";
+    document.querySelector(".results").style.display = "none";
     displayHighScores();
 });
 
 // Clear High Scores Button
 clearHighScores.addEventListener("click", function() {
     localStorage.removeItem("highScores");
+    newHighScores.style.display = "none";
 });
 
 // Restart Game Button
-restartQuiz.addEventListener("click", function() {
-    startQuiz ();
+restartQuiz.addEventListener("click", function () {
+    document.querySelector(".intro-page").style.display = "block";
+    document.querySelector(".results").style.display = "none";
+    document.querySelector(".highScoreList").style.display = "none";
+    countdown.textContent = timeRemaining;
+    clearInterval(timerInterval);
+    timeRemaining = 60;
 });
