@@ -93,6 +93,7 @@ beginQuiz ();
 function beginQuiz () {
 // Intro Page Disappears, Timer Begins, Questions Begin
 startQuiz.addEventListener("click", function() {
+    currentIndex = 0;
     document.querySelector(".intro-page").style.display = "none";
     beginTimer();
     
@@ -230,4 +231,5 @@ restartQuiz.addEventListener("click", function () {
     countdown.textContent = timeRemaining;
     clearInterval(timerInterval);
     timeRemaining = 60;
+    beginQuiz ();
 });

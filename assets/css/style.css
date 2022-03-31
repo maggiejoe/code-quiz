@@ -18,3 +18,159 @@ body {
 .hide {
     display: none;
 }
+
+/* HEADER STYLING */
+/* Need to fix the highscore and timer to be seperated on both sides of the screen */
+header {
+    padding: 30px;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+}
+
+.topper {
+    display: flex;
+    flex-wrap: wrap;
+    font-weight: bolder;
+    font-size: xx-large;
+    padding: 20px;
+}
+
+#highScore {
+    color: var(--light-green);
+    font-size: medium;
+    background: none;
+    border: none;
+}
+
+#highScore:hover {
+    background: var(--dark-green);
+    color: var(--ivory);
+    padding: 5px;
+    border-radius: 5px;
+}
+
+.timer {
+    color: var(--black);
+    font-size: medium;
+    display: flex;
+    flex-wrap: wrap;
+    align-content: center;
+}
+
+/* QUIZ INTRO START */
+.intro-page {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    padding: 25px;
+}
+
+.main-header {
+    display: flex;
+    justify-content: center;
+    font-size: 35px;
+    padding: 10px;
+}
+
+.intro {
+    margin-top: 25px;
+    margin-left: 90px;
+    margin-right: 90px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    flex-direction: column;
+    text-align: center;
+}
+
+.break {
+    padding: 15px;
+    font-weight: bold;
+}
+
+.startButton {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.start-btn {
+    background: var(--dark-green);
+    color: var(--ivory);
+    padding: 15px;
+    border-radius: 10px;
+    font-size: larger;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+}
+
+.start-btn:hover {
+    background: var(--light-green);
+}
+/* QUIZ INTRO END */
+
+/* QUESTIONS START */
+.question-section {
+    display: none;
+    flex-wrap: wrap;
+}
+
+.choice-list {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.question {
+    padding: 20px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.quiz-choices {
+    /* padding: 20px; */
+    display: flex;
+    flex-wrap: wrap;
+    margin: auto;
+    flex-direction: column;
+}
+
+.btn-1,
+.btn-2,
+.btn-3,
+.btn-4 {
+    background: var(--dark-green);
+    color: var(--ivory);
+    padding: 5px;
+    border-radius: 10px;
+    text-align: left;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+}
+
+.btn-1:hover,
+.btn-2:hover,
+.btn-3:hover,
+.btn-4:hover {
+    background: var(--light-green);
+}
+
+.alerts {
+    display: flex;
+    justify-content: center;
+}
+
+.answer-alert {
+    display: none;
+    padding: 20px;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+/* QUESTIONS END*/
+
+/* RESULTS START */
+
+
+/* RESULTS END */
