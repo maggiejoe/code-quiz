@@ -20,21 +20,23 @@ body {
 }
 
 /* HEADER STYLING */
-/* Need to fix the highscore and timer to be seperated on both sides of the screen */
+/* Need to fix the high score and timer to be separated on both sides of the screen */
 header {
-    padding: 30px;
+    padding: 15px;
     display: flex;
     flex-wrap: wrap;
     align-items: center;
-    justify-content: center;
+    border: 3px solid var(--black);
+    margin: 10px;
+    justify-content: space-between;
 }
 
 .topper {
     display: flex;
-    flex-wrap: wrap;
     font-weight: bolder;
     font-size: xx-large;
     padding: 20px;
+    justify-content: space-between;
 }
 
 #highScore {
@@ -42,6 +44,7 @@ header {
     font-size: medium;
     background: none;
     border: none;
+    padding: 10px;
 }
 
 #highScore:hover {
@@ -49,14 +52,13 @@ header {
     color: var(--ivory);
     padding: 5px;
     border-radius: 5px;
+    opacity: 50%;
 }
 
 .timer {
     color: var(--black);
     font-size: medium;
-    display: flex;
-    flex-wrap: wrap;
-    align-content: center;
+    padding: 10px;
 }
 
 /* QUIZ INTRO START */
@@ -249,5 +251,8 @@ header {
     font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
 }
 
-
+.unorderedHighScoreList {
+    display: flex;
+    flex-wrap: wrap;
+}
 /* HIGH SCORES END */

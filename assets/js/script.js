@@ -91,16 +91,16 @@ var currentIndex = 0
 beginQuiz ();
 
 function beginQuiz () {
-// Intro Page Disappears, Timer Begins, Questions Begin
-startQuiz.addEventListener("click", function() {
-    currentIndex = 0;
-    document.querySelector(".intro-page").style.display = "none";
-    beginTimer();
+    // Intro Page Disappears, Timer Begins, Questions Begin
+    startQuiz.addEventListener("click", function() {
+        currentIndex = 0;
+        document.querySelector(".intro-page").style.display = "none";
+        beginTimer();
     
-    document.querySelector(".question-section").style.display = "block";
-    questionCycle();
-})
-};
+        document.querySelector(".question-section").style.display = "block";
+        questionCycle();
+    })
+    };
 
 // Start Timer
 function beginTimer () {
