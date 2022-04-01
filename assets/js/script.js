@@ -151,19 +151,6 @@ function showScore() {
 
     results.textContent = score;
     
-    submit.addEventListener("click", function () {
-            // save name and score to local storage
-            document.querySelector("#wrong").style.display = "none";
-            document.querySelector("#right").style.display = "none";
-
-            // localStorage.setItem(name, score);
-            if (document.querySelector(".input-line").value.length === 0) {
-                window.alert("You must input your name or initials!")
-            } else {
-            savedScores();
-            // displayHighScores();
-            }
-    });
 };
 
 // Generate High Score
@@ -199,13 +186,14 @@ function displayHighScores () {
     var localSaveHighScores = JSON.parse(localStorage.getItem("highScores"));
     var saveHighScores = localSaveHighScores.sort(function(a, b){return b.userFinalScore - a.userFinalScore});
     console.log(saveHighScores);
-    // create an if statement to check if null or ""
     for (var highScoreIndex = 0; highScoreIndex < saveHighScores.length; highScoreIndex++) {
         newHighScores = document.createElement("li");
         newHighScores.classList.add("li-style");
         newHighScores.innerHTML = saveHighScores[highScoreIndex].userName + ": " + saveHighScores[highScoreIndex].userFinalScore;
         highScoreList.appendChild(newHighScores);
     } 
+    // dedicated container and append 
+    // clear "old high scores" before restart button resets quiz
 } 
 
 // View High Scores Button
@@ -216,6 +204,19 @@ viewHighScore.addEventListener("click", function() {
     document.querySelector(".question-section").style.display = "none";
     document.querySelector(".results").style.display = "none";
     displayHighScores();
+});
+
+submit.addEventListener("click", function () {
+    // save name and score to local storage
+    document.querySelector("#wrong").style.display = "none";
+    document.querySelector("#right").style.display = "none";
+
+    // localStorage.setItem(name, score);
+    if (document.querySelector(".input-line").value.length === 0) {
+        window.alert("You must input your name or initials!")
+    } else {
+    savedScores();
+    }
 });
 
 // Clear High Scores Button
