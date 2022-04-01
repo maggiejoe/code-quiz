@@ -202,6 +202,7 @@ function displayHighScores () {
     // create an if statement to check if null or ""
     for (var highScoreIndex = 0; highScoreIndex < saveHighScores.length; highScoreIndex++) {
         newHighScores = document.createElement("li");
+        newHighScores.classList.add("li-style");
         newHighScores.innerHTML = saveHighScores[highScoreIndex].userName + ": " + saveHighScores[highScoreIndex].userFinalScore;
         highScoreList.appendChild(newHighScores);
     } 
@@ -219,7 +220,7 @@ viewHighScore.addEventListener("click", function() {
 
 // Clear High Scores Button
 clearHighScores.addEventListener("click", function() {
-    localStorage.removeItem("highScores");
+    localStorage.clear("highScores");
     newHighScores.style.display = "none";
 });
 
