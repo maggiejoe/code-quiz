@@ -25,28 +25,28 @@ https://maggiejoe.github.io/code-quiz/
 
 
 ## Technical Acceptance
-*✅ At the beginning of the quiz, a timer begins when the `Start Quiz` button is clicked on
-*✅ When the question is answered, the next question is presented
-*✅ If the question is answered wrong, time is taken off the timer
-*✅ When all questions have been answered, the timer stops the user sees their score and has the ability to save their score
-*✅ Once the user has saved their score, they are presented with a page that displays all high scores saved on the local device
+* ✅ At the beginning of the quiz, a timer begins when the `Start Quiz` button is clicked on
+* ✅ When the question is answered, the next question is presented
+* ✅ If the question is answered wrong, time is taken off the timer
+* ✅ When all questions have been answered, the timer stops the user sees their score and has the ability to save their score
+* ✅ Once the user has saved their score, they are presented with a page that displays all high scores saved on the local device
 
 ## Deployment
 
-*✅ Application Deploys @ live URL
-*✅ Application loads error free
-*✅ GitHub URL submitted
-*✅ GitHub repo contains application code
+* ✅ Application Deploys @ live URL
+* ✅ Application loads error free
+* ✅ GitHub URL submitted
+* ✅ GitHub repo contains application code
 
 ## Application Quality
 
-*✅ User experience is intuitive and easy to navigate
-*✅ UI style is clean and polished
-*✅ Application resembles the mock-up functionality provided in the instructions
+* ✅ User experience is intuitive and easy to navigate
+* ✅ UI style is clean and polished
+* ✅ Application resembles the mock-up functionality provided in the instructions
 
 ## Repository Quality
-*✅ Repo has unique name
-*✅ Repo follows best practices for file structure & naming conventions
-*✅ Repo follows best practices for class/id naming, indentation, quality comments...etc
-*✅ Repo has multiple commit messages
-*✅ Repo has quality README file with descriptions, screenshots & a link to deploy application
+* ✅ Repo has unique name
+* ✅ Repo follows best practices for file structure & naming conventions
+* ✅ Repo follows best practices for class/id naming, indentation, quality comments...etc
+* ✅ Repo has multiple commit messages
+* ✅ Repo has quality README file with descriptions, screenshots & a link to deploy application
