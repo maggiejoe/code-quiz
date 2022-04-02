@@ -268,4 +268,10 @@ header {
     text-decoration: none;
     justify-content: center;
 }
+
+#highscore-ul {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+}
 /* HIGH SCORES END */

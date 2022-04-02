@@ -183,15 +183,16 @@ function savedScores () {
 function displayHighScores () {
     document.querySelector(".results").style.display = "none";
     document.querySelector(".highScoreList").style.display = "block";
+    document.getElementById("highscore-ul").innerHTML = "";
     var localSaveHighScores = JSON.parse(localStorage.getItem("highScores"));
     var saveHighScores = localSaveHighScores.sort(function(a, b){return b.userFinalScore - a.userFinalScore});
     console.log(saveHighScores);
     for (var highScoreIndex = 0; highScoreIndex < saveHighScores.length; highScoreIndex++) {
-        console.log("testing code");
         newHighScores = document.createElement("li");
         newHighScores.classList.add("li-style");
         newHighScores.innerHTML = saveHighScores[highScoreIndex].userName + ": " + saveHighScores[highScoreIndex].userFinalScore;
-        highScoreList.appendChild(newHighScores);
+        // highScoreList.appendChild(newHighScores);
+        document.getElementById("highscore-ul").appendChild(newHighScores);
     } 
     // dedicated container and append 
     // clear "old high scores" before restart button resets quiz
