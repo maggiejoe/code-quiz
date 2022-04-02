@@ -187,6 +187,7 @@ function displayHighScores () {
     var saveHighScores = localSaveHighScores.sort(function(a, b){return b.userFinalScore - a.userFinalScore});
     console.log(saveHighScores);
     for (var highScoreIndex = 0; highScoreIndex < saveHighScores.length; highScoreIndex++) {
+        console.log("testing code");
         newHighScores = document.createElement("li");
         newHighScores.classList.add("li-style");
         newHighScores.innerHTML = saveHighScores[highScoreIndex].userName + ": " + saveHighScores[highScoreIndex].userFinalScore;
