@@ -14,12 +14,20 @@ Going forward, I know I need to use the dev tools more often to help me debug is
 
 ## Deployment Link
 
-https://maggiejoe.github.io/code-quiz/
+Click [here](https://maggiejoe.github.io/code-quiz/) to view the deployable link!
+Click [here](https://github.com/maggiejoe/code-quiz.git) to view my github repo!
 
 ## Screenshots
 
-![](./assets/images/code-quiz-mock-up-gif.gif)
-
+Below are screenshots of each page of the application
+![](./assets/images/code-quiz-1.png)
+![](./assets/images/code-quiz-2.png)
+![](./assets/images/code-quiz-3.png)
+![](./assets/images/code-quiz-4.png)
+![](./assets/images/code-quiz-5.png)
+![](./assets/images/code-quiz-6.png)
+![](./assets/images/code-quiz-7.png)
+![](./assets/images/code-quiz-8.png)
 
 # Challenge #4 Criteria
 
