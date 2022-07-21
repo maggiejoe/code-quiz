@@ -14,8 +14,8 @@ Going forward, I know I need to use the dev tools more often to help me debug is
 
 ## Deployment Link
 
-Click [here](https://maggiejoe.github.io/code-quiz/) to view the deployable link!
-Click [here](https://github.com/maggiejoe/code-quiz.git) to view my github repo!
+* Click [here](https://maggiejoe.github.io/code-quiz/) to view the deployable link!
+* Click [here](https://github.com/maggiejoe/code-quiz.git) to view my github repo!
 
 ## Screenshots
 
