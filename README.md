@@ -60,5 +60,5 @@ I'm proud to say that I am the sole contributor of this project
 
 
 ## Links
-* **[Repository](https://maggiejoe.github.io/code-quiz/)**
-* **[Live App](https://github.com/maggiejoe/code-quiz.git)**
+* **[Repository](https://github.com/maggiejoe/code-quiz.git)**
+* **[Live App](https://maggiejoe.github.io/code-quiz/)**
