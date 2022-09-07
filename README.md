@@ -5,9 +5,9 @@
 1. [Description](#description)
 2. [Motivation](#motivation)
 3. [Challenges](#challenges)
-4. [Technologies Applied](#technologies)
-5. [Future Development](#future)
-6. [Documentation](#documentation)
+4. [Screenshots](#screenshots)
+5. [Technologies Applied](#technologies-used)
+6. [Future Development](#future-development)
 7. [Contributors] (#contributors)
 8. [Links](#links)
 
@@ -53,6 +53,10 @@ Below are screenshots of each page of the application
 * Add more animation for a more exciting user experience
 * Give a high score with two variables, time and accuracy
 * More enhanced styling for a better user experience
+
+
+## Contributors
+I'm proud to say that I am the sole contributor of this project
 
 
 ## Links
