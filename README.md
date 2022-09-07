@@ -8,7 +8,7 @@
 4. [Screenshots](#screenshots)
 5. [Technologies Applied](#technologies-used)
 6. [Future Development](#future-development)
-7. [Contributors] (#contributors)
+7. [Contributors](#contributors)
 8. [Links](#links)
 
 
